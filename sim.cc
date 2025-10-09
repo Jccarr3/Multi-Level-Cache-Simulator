@@ -114,19 +114,20 @@ int main (int argc, char *argv[]) {
       // }
 
       // printf("\n=====Measurements=====\n");
-       double mr;
+       //double mr;
       // printf("a. L%d reads:                    %d\n", L1->level, L1->reads);                       //print number of reads
       // printf("b. L%d read misses:              %d\n", L1->level, L1->read_misses);           //print number of read misses
       // printf("c. L%d writes:                   %d\n", L1->level, L1->writes);                     //print number of writes
       // printf("d. L%d write misses:             %d\n", L1->level, L1->write_misses);         //print number of write misses
-      if(L1->next_level == nullptr){
-            mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
-      }
-      else{
-            mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
-      }
+      // if(L1->next_level == nullptr){
+      //       mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
+      // }
+      // else{
+      //       mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
+      // }
+      printf("%d\n", L1->read_misses + L1->write_misses);
       //printf("e. L%d miss rate:                %.4f\n", L1->level, mr);
-      printf("%.4f\n", mr);                   //used only for bash script to verify correctness
+      //printf("%.4f\n", mr);                   //used only for bash script to verify correctness
 
       // printf("f. L%d writebacks:               %d\n",L1->level, L1->write_backs);           //print number of write backs
       // printf("g. L%d prefetches:               %d\n", L1->level, L1->prefetches);
