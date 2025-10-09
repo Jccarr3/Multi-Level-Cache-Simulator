@@ -19,6 +19,7 @@ echo "running direct mapped tests"
 ./sim 32 65536 1 0 0 0 0 gcc_trace.txt
 ./sim 32 131072 1 0 0 0 0 gcc_trace.txt
 ./sim 32 262144 1 0 0 0 0 gcc_trace.txt
+./sim 32 524288 1 0 0 0 0 gcc_trace.txt
 ./sim 32 1048576 1 0 0 0 0 gcc_trace.txt
 
 echo "running 2-way set associative tests"
@@ -32,6 +33,7 @@ echo "running 2-way set associative tests"
 ./sim 32 65536 2 0 0 0 0 gcc_trace.txt
 ./sim 32 131072 2 0 0 0 0 gcc_trace.txt
 ./sim 32 262144 2 0 0 0 0 gcc_trace.txt
+./sim 32 524288 2 0 0 0 0 gcc_trace.txt
 ./sim 32 1048576 2 0 0 0 0 gcc_trace.txt
 
 echo "running 4-way set associative tests"
@@ -45,6 +47,7 @@ echo "running 4-way set associative tests"
 ./sim 32 65536 4 0 0 0 0 gcc_trace.txt
 ./sim 32 131072 4 0 0 0 0 gcc_trace.txt
 ./sim 32 262144 4 0 0 0 0 gcc_trace.txt
+./sim 32 524288 4 0 0 0 0 gcc_trace.txt
 ./sim 32 1048576 4 0 0 0 0 gcc_trace.txt
 
 echo "running 8-way set associative tests"
@@ -58,6 +61,7 @@ echo "running 8-way set associative tests"
 ./sim 32 65536 8 0 0 0 0 gcc_trace.txt
 ./sim 32 131072 8 0 0 0 0 gcc_trace.txt
 ./sim 32 262144 8 0 0 0 0 gcc_trace.txt
+./sim 32 524288 8 0 0 0 0 gcc_trace.txt
 ./sim 32 1048576 8 0 0 0 0 gcc_trace.txt
 
 echo "running fully associative tests"
@@ -71,7 +75,8 @@ echo "running fully associative tests"
 ./sim 32 65536 2048 0 0 0 0 gcc_trace.txt
 ./sim 32 131072 4096 0 0 0 0 gcc_trace.txt
 ./sim 32 262144 8192 0 0 0 0 gcc_trace.txt
-./sim 32 1048576 16384 0 0 0 0 gcc_trace.txt
+./sim 32 524288 16384 0 0 0 0 gcc_trace.txt
+./sim 32 1048576 32768 0 0 0 0 gcc_trace.txt
 
 
 

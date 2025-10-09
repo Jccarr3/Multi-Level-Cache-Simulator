@@ -71,16 +71,16 @@ int main (int argc, char *argv[]) {
    }
     
    // Print simulator configuration.
-   printf("===== Simulator configuration =====\n");
-   printf("BLOCKSIZE:  %u\n", params.BLOCKSIZE);
-   printf("L1_SIZE:    %u\n", params.L1_SIZE);
-   printf("L1_ASSOC:   %u\n", params.L1_ASSOC);
-   printf("L2_SIZE:    %u\n", params.L2_SIZE);
-   printf("L2_ASSOC:   %u\n", params.L2_ASSOC);
-   printf("PREF_N:     %u\n", params.PREF_N);
-   printf("PREF_M:     %u\n", params.PREF_M);
-   printf("trace_file: %s\n", trace_file);
-   printf("\n");
+   // printf("===== Simulator configuration =====\n");
+   // printf("BLOCKSIZE:  %u\n", params.BLOCKSIZE);
+   // printf("L1_SIZE:    %u\n", params.L1_SIZE);
+   // printf("L1_ASSOC:   %u\n", params.L1_ASSOC);
+   // printf("L2_SIZE:    %u\n", params.L2_SIZE);
+   // printf("L2_ASSOC:   %u\n", params.L2_ASSOC);
+   // printf("PREF_N:     %u\n", params.PREF_N);
+   // printf("PREF_M:     %u\n", params.PREF_M);
+   // printf("trace_file: %s\n", trace_file);
+   // printf("\n");
 
    // Read requests from the trace file and echo them back.
    while (fscanf(fp, "%c %x\n", &rw, &addr) == 2) {	// Stay in the loop if fscanf() successfully parsed two tokens as specified.
@@ -125,7 +125,9 @@ int main (int argc, char *argv[]) {
       else{
             mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
       }
-      printf("e. L%d miss rate:                %.4f\n", L1->level, mr);
+      //printf("e. L%d miss rate:                %.4f\n", L1->level, mr);
+      printf("%.4f\n", mr);                   //used only for bash script to verify correctness
+
       // printf("f. L%d writebacks:               %d\n",L1->level, L1->write_backs);           //print number of write backs
       // printf("g. L%d prefetches:               %d\n", L1->level, L1->prefetches);
 
