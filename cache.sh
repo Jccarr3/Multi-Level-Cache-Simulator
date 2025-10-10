@@ -17,7 +17,7 @@ g++ -o sim sim.cc
 #     do
 #         ./sim 32 $j $i 0 0 0 0 gcc_trace.txt
 #     done
-# done
+#  done
 
 # ./sim 32 1024 32 0 0 0 0 gcc_trace.txt
 # ./sim 32 2048 64 0 0 0 0 gcc_trace.txt
@@ -72,7 +72,7 @@ g++ -o sim sim.cc
 #code for stream table
 for i in 0 1 2 3 4          #for each number of stream buffers
 do
-    ./sim 16 1024 1 0 0 $i 4 gcc_trace.txt
+    ./sim 16 1024 1 0 0 $i 4 streams_trace.txt
 
 done
 #code for stream table^^^^^^^
