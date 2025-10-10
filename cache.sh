@@ -47,10 +47,10 @@ g++ -o sim sim.cc
 
 
 #code for graph 4
-# for i in 1024 2048 4096 8192 16384 32768            #for each associativity
+# for i in 1024 2048 4096 8192 16384 32768            #for each cache size 
 # do
 #     echo "cache size $i"
-#    for j in 16 32 64 128        #for each cache size
+#    for j in 16 32 64 128        #for each block size
 #     do
 #         ./sim $j $i 4 0 0 0 0 gcc_trace.txt
 #     done
@@ -58,17 +58,24 @@ g++ -o sim sim.cc
 #code for graph 4^^^^^^^
 
 #code for graph 5
-for i in 16384 32768 65536          #for each associativity
-do
-    echo "L2 cache size $i"
-   for j in 1024 2048 4096 8192       #for each cache size
-    do
-        ./sim 32 $j 4 $i 8 0 0 gcc_trace.txt
-    done
-done
+# for i in 16384 32768 65536          #for each L2 size
+# do
+#     echo "L2 cache size $i"
+#    for j in 1024 2048 4096 8192       #for each L1 size
+#     do
+#         ./sim 32 $j 4 $i 8 0 0 gcc_trace.txt
+#     done
+# done
 #code for graph 5^^^^^^^
 
 
+#code for stream table
+for i in 0 1 2 3 4          #for each number of stream buffers
+do
+    ./sim 16 1024 1 0 0 $i 4 gcc_trace.txt
+
+done
+#code for stream table^^^^^^^
 
 
 #finished
