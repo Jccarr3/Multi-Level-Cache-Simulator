@@ -114,7 +114,7 @@ int main (int argc, char *argv[]) {
       // }
 
       // printf("\n=====Measurements=====\n");
-       //double mr;
+       double mr;
       // printf("a. L%d reads:                    %d\n", L1->level, L1->reads);                       //print number of reads
       // printf("b. L%d read misses:              %d\n", L1->level, L1->read_misses);           //print number of read misses
       // printf("c. L%d writes:                   %d\n", L1->level, L1->writes);                     //print number of writes
@@ -125,9 +125,7 @@ int main (int argc, char *argv[]) {
       // else{
       //       mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
       // }
-      printf("%d\n", L1->read_misses + L1->write_misses);
       //printf("e. L%d miss rate:                %.4f\n", L1->level, mr);
-      //printf("%.4f\n", mr);                   //used only for bash script to verify correctness
 
       // printf("f. L%d writebacks:               %d\n",L1->level, L1->write_backs);           //print number of write backs
       // printf("g. L%d prefetches:               %d\n", L1->level, L1->prefetches);
@@ -139,12 +137,12 @@ int main (int argc, char *argv[]) {
       //    printf("k. L2 read misses (prefetch):    0\n");
       //    printf("l. L2 writes:                 %d\n", L2->writes);                     //print number of writes
       //    printf("m. L2 write misses:           %d\n", L2->write_misses);         //print number of write misses
-      //    if(L1->next_level == nullptr){
-      //          mr = ((double)L2->read_misses + (double)L2->write_misses) / ((double)L2->reads + (double)L2->writes);
-      //    }
-      //    else{
-      //          mr = ((double)L2->read_misses) / ((double)L2->reads);
-      //    }
+         // if(L1->next_level == nullptr){
+         //       mr = ((double)L2->read_misses + (double)L2->write_misses) / ((double)L2->reads + (double)L2->writes);
+         // }
+         // else{
+         //       mr = ((double)L2->read_misses) / ((double)L2->reads);
+         // }
       //    printf("n. L2 miss rate:              %.4f\n",  mr);
       //    printf("o. L2 writebacks:              %d\n", L2->write_backs);           //print number of write backs
       //    printf("p. L2 prefetches:              %d\n",L2->prefetches);
@@ -167,5 +165,11 @@ int main (int argc, char *argv[]) {
       //    else{
       //       printf("q. Memory traffic:              %d\n", L2->read_misses + L2->write_misses + L2->write_backs + L2->prefetches); //print total memory traffic
       //    }
+
+      mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
+      printf("%.4f   ", mr);
+
+      mr = ((double)L2->read_misses) / ((double)L2->reads);
+      printf("%.4f\n", mr);
          return(0);
     }

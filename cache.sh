@@ -1,6 +1,5 @@
 #! /bin/bash
 
-a=1
 echo "testing cache script"
 
 
@@ -9,63 +8,16 @@ echo "testing cache script"
 g++ -o sim sim.cc
 
 #run code
-echo "running direct mapped tests $a"
-((a++))
-./sim 32 1024 1 0 0 0 0 gcc_trace.txt
-./sim 32 2048 1 0 0 0 0 gcc_trace.txt
-./sim 32 4096 1 0 0 0 0 gcc_trace.txt
-./sim 32 8192 1 0 0 0 0 gcc_trace.txt
-./sim 32 16384 1 0 0 0 0 gcc_trace.txt
-./sim 32 32768 1 0 0 0 0 gcc_trace.txt
-./sim 32 65536 1 0 0 0 0 gcc_trace.txt
-./sim 32 131072 1 0 0 0 0 gcc_trace.txt
-./sim 32 262144 1 0 0 0 0 gcc_trace.txt
-./sim 32 524288 1 0 0 0 0 gcc_trace.txt
-./sim 32 1048576 1 0 0 0 0 gcc_trace.txt
 
-echo "running 2-way set associative tests $a"
-
-./sim 32 1024 2 0 0 0 0 gcc_trace.txt
-./sim 32 2048 2 0 0 0 0 gcc_trace.txt
-./sim 32 4096 2 0 0 0 0 gcc_trace.txt
-./sim 32 8192 2 0 0 0 0 gcc_trace.txt
-./sim 32 16384 2 0 0 0 0 gcc_trace.txt
-./sim 32 32768 2 0 0 0 0 gcc_trace.txt
-./sim 32 65536 2 0 0 0 0 gcc_trace.txt
-./sim 32 131072 2 0 0 0 0 gcc_trace.txt
-./sim 32 262144 2 0 0 0 0 gcc_trace.txt
-./sim 32 524288 2 0 0 0 0 gcc_trace.txt
-./sim 32 1048576 2 0 0 0 0 gcc_trace.txt
-
-echo "running 4-way set associative tests $a"
-
-./sim 32 1024 4 0 0 0 0 gcc_trace.txt
-./sim 32 2048 4 0 0 0 0 gcc_trace.txt
-./sim 32 4096 4 0 0 0 0 gcc_trace.txt
-./sim 32 8192 4 0 0 0 0 gcc_trace.txt
-./sim 32 16384 4 0 0 0 0 gcc_trace.txt
-./sim 32 32768 4 0 0 0 0 gcc_trace.txt
-./sim 32 65536 4 0 0 0 0 gcc_trace.txt
-./sim 32 131072 4 0 0 0 0 gcc_trace.txt
-./sim 32 262144 4 0 0 0 0 gcc_trace.txt
-./sim 32 524288 4 0 0 0 0 gcc_trace.txt
-./sim 32 1048576 4 0 0 0 0 gcc_trace.txt
-
-echo "running 8-way set associative tests $a"
-
-./sim 32 1024 8 0 0 0 0 gcc_trace.txt
-./sim 32 2048 8 0 0 0 0 gcc_trace.txt
-./sim 32 4096 8 0 0 0 0 gcc_trace.txt
-./sim 32 8192 8 0 0 0 0 gcc_trace.txt
-./sim 32 16384 8 0 0 0 0 gcc_trace.txt
-./sim 32 32768 8 0 0 0 0 gcc_trace.txt
-./sim 32 65536 8 0 0 0 0 gcc_trace.txt
-./sim 32 131072 8 0 0 0 0 gcc_trace.txt
-./sim 32 262144 8 0 0 0 0 gcc_trace.txt
-./sim 32 524288 8 0 0 0 0 gcc_trace.txt
-./sim 32 1048576 8 0 0 0 0 gcc_trace.txt
-
- echo "running fully associative tests $a"
+#code for graphs 1&2
+# for i in 1 2 4 8            #for each associativity
+# do
+#     echo "num ways $i"
+#    for j in 1024 2048 4096 8192 16384 32768 65536 131072 262144 524288 1048576          #for each cache size
+#     do
+#         ./sim 32 $j $i 0 0 0 0 gcc_trace.txt
+#     done
+# done
 
 # ./sim 32 1024 32 0 0 0 0 gcc_trace.txt
 # ./sim 32 2048 64 0 0 0 0 gcc_trace.txt
@@ -78,6 +30,21 @@ echo "running 8-way set associative tests $a"
 # ./sim 32 262144 8192 0 0 0 0 gcc_trace.txt
 # ./sim 32 524288 16384 0 0 0 0 gcc_trace.txt
 # ./sim 32 1048576 32768 0 0 0 0 gcc_trace.txt
+
+#code for graphs 1&2^^^^^^^
+
+
+#code for graphs 3&4
+for i in 1 2 4 8            #for each associativity
+do
+    echo "num ways $i"
+   for j in 1024 2048 4096 8192          #for each cache size
+    do
+        ./sim 32 $j $i 16384 8 0 0 gcc_trace.txt
+    done
+done
+
+
 
 
 
