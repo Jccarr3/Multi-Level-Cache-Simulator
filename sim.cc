@@ -167,9 +167,9 @@ int main (int argc, char *argv[]) {
       //    }
 
       mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
-      printf("%.4f\n", mr);
+      printf("%.4f   ", mr);
 
-      // mr = ((double)L2->read_misses) / ((double)L2->reads);
-      // printf("%.4f\n", mr);
+      mr = ((double)L2->read_misses) / ((double)L2->reads);
+      printf("%.4f\n", mr);
          return(0);
     }
