@@ -34,16 +34,28 @@ g++ -o sim sim.cc
 #code for graphs 1&2^^^^^^^
 
 
-#code for graphs 3&4
-for i in 1 2 4 8            #for each associativity
+#code for graphs 3
+# for i in 1 2 4 8            #for each associativity
+# do
+#     echo "num ways $i"
+#    for j in 1024 2048 4096 8192          #for each cache size
+#     do
+#         ./sim 32 $j $i 16384 8 0 0 gcc_trace.txt
+#     done
+# done
+#code for graphs 3^^^^^^^
+
+
+#code for graph 4
+for i in 1024 2048 4096 8192 16384 32768            #for each associativity
 do
-    echo "num ways $i"
-   for j in 1024 2048 4096 8192          #for each cache size
+    echo "cache size $i"
+   for j in 16 32 64 128        #for each cache size
     do
-        ./sim 32 $j $i 16384 8 0 0 gcc_trace.txt
+        ./sim $j $i 4 0 0 0 0 gcc_trace.txt
     done
 done
-
+#code for graph 4^^^^^^^
 
 
 
