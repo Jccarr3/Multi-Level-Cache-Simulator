@@ -71,16 +71,16 @@ int main (int argc, char *argv[]) {
    }
     
    // Print simulator configuration.
-   // printf("===== Simulator configuration =====\n");
-   // printf("BLOCKSIZE:  %u\n", params.BLOCKSIZE);
-   // printf("L1_SIZE:    %u\n", params.L1_SIZE);
-   // printf("L1_ASSOC:   %u\n", params.L1_ASSOC);
-   // printf("L2_SIZE:    %u\n", params.L2_SIZE);
-   // printf("L2_ASSOC:   %u\n", params.L2_ASSOC);
-   // printf("PREF_N:     %u\n", params.PREF_N);
-   // printf("PREF_M:     %u\n", params.PREF_M);
-   // printf("trace_file: %s\n", trace_file);
-   // printf("\n");
+   printf("===== Simulator configuration =====\n");
+   printf("BLOCKSIZE:  %u\n", params.BLOCKSIZE);
+   printf("L1_SIZE:    %u\n", params.L1_SIZE);
+   printf("L1_ASSOC:   %u\n", params.L1_ASSOC);
+   printf("L2_SIZE:    %u\n", params.L2_SIZE);
+   printf("L2_ASSOC:   %u\n", params.L2_ASSOC);
+   printf("PREF_N:     %u\n", params.PREF_N);
+   printf("PREF_M:     %u\n", params.PREF_M);
+   printf("trace_file: %s\n", trace_file);
+   printf("\n");
 
    // Read requests from the trace file and echo them back.
    while (fscanf(fp, "%c %x\n", &rw, &addr) == 2) {	// Stay in the loop if fscanf() successfully parsed two tokens as specified.
@@ -99,75 +99,75 @@ int main (int argc, char *argv[]) {
       L1->request(rw, addr);
       ///////////////////////////////////////////////////////
    }
-      // L1->print_contents();
-      // if(L1->next_level != nullptr){
-      //    printf("\n");
-      //    L2->print_contents();
-      // }
-      // if((L1->next_level == nullptr) && (params.PREF_M > 0)){
-      //    printf("\n=====Stream Buffer(s) Contents=====\n");
-      //    L1->print_streams();
-      // }
-      // else if(params.PREF_M > 0){
-      //    printf("\n=====Stream Buffer(s) Contents=====\n");
-      //    L2->print_streams();
-      // }
+      L1->print_contents();
+      if(L1->next_level != nullptr){
+         printf("\n");
+         L2->print_contents();
+      }
+      if((L1->next_level == nullptr) && (params.PREF_M > 0)){
+         printf("\n=====Stream Buffer(s) Contents=====\n");
+         L1->print_streams();
+      }
+      else if(params.PREF_M > 0){
+         printf("\n=====Stream Buffer(s) Contents=====\n");
+         L2->print_streams();
+      }
 
-      // printf("\n=====Measurements=====\n");
+      printf("\n=====Measurements=====\n");
        double mr;
-      // printf("a. L%d reads:                    %d\n", L1->level, L1->reads);                       //print number of reads
-      // printf("b. L%d read misses:              %d\n", L1->level, L1->read_misses);           //print number of read misses
-      // printf("c. L%d writes:                   %d\n", L1->level, L1->writes);                     //print number of writes
-      // printf("d. L%d write misses:             %d\n", L1->level, L1->write_misses);         //print number of write misses
-      // if(L1->next_level == nullptr){
-      //       mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
-      // }
-      // else{
-      //       mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
-      // }
-      //printf("e. L%d miss rate:                %.4f\n", L1->level, mr);
+      printf("a. L%d reads:                    %d\n", L1->level, L1->reads);                       //print number of reads
+      printf("b. L%d read misses:              %d\n", L1->level, L1->read_misses);           //print number of read misses
+      printf("c. L%d writes:                   %d\n", L1->level, L1->writes);                     //print number of writes
+      printf("d. L%d write misses:             %d\n", L1->level, L1->write_misses);         //print number of write misses
+      if(L1->next_level == nullptr){
+            mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
+      }
+      else{
+            mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
+      }
+      printf("e. L%d miss rate:                %.4f\n", L1->level, mr);
 
-      // printf("f. L%d writebacks:               %d\n",L1->level, L1->write_backs);           //print number of write backs
-      // printf("g. L%d prefetches:               %d\n", L1->level, L1->prefetches);
+      printf("f. L%d writebacks:               %d\n",L1->level, L1->write_backs);           //print number of write backs
+      printf("g. L%d prefetches:               %d\n", L1->level, L1->prefetches);
 
-      // if(L1->next_level != nullptr){
-      //    printf("h. L2 reads (demand):         %d\n",  L2->reads);                       //print number of reads
-      //    printf("i. L2 read misses (demand):   %d\n",  L2->read_misses);           //print number of read misses
-      //    printf("j. L2 reads (prefetch):          0\n");
-      //    printf("k. L2 read misses (prefetch):    0\n");
-      //    printf("l. L2 writes:                 %d\n", L2->writes);                     //print number of writes
-      //    printf("m. L2 write misses:           %d\n", L2->write_misses);         //print number of write misses
-         // if(L1->next_level == nullptr){
-         //       mr = ((double)L2->read_misses + (double)L2->write_misses) / ((double)L2->reads + (double)L2->writes);
-         // }
-         // else{
-         //       mr = ((double)L2->read_misses) / ((double)L2->reads);
-         // }
-      //    printf("n. L2 miss rate:              %.4f\n",  mr);
-      //    printf("o. L2 writebacks:              %d\n", L2->write_backs);           //print number of write backs
-      //    printf("p. L2 prefetches:              %d\n",L2->prefetches);
-      // }
-      // else{
-      //    printf("h. L2 reads (demand):           %d\n",  0);                       //print number of reads
-      //    printf("i. L2 read misses (demand):     %d\n", 0);           //print number of read misses
-      //    printf("j. L2 reads (prefetch):         %d\n",  0);                       //print number of reads
-      //    printf("k. L2 read misses (prefetch):   %d\n", 0);  
-      //    printf("l. L2 writes:                   %d\n", 0);                     //print number of writes
-      //    printf("m. L2 write misses:             %d\n", 0);         //print number of write misses         
-      //    printf("n. L2 miss rate:                %.4f\n", 0.0000);
-      //    printf("o. L2 write backs:              %d\n", 0);           //print number of write backs
-      //    printf("p. L2 prefetches:               %d\n", 0);
-      // }
+      if(L1->next_level != nullptr){
+         printf("h. L2 reads (demand):         %d\n",  L2->reads);                       //print number of reads
+         printf("i. L2 read misses (demand):   %d\n",  L2->read_misses);           //print number of read misses
+         printf("j. L2 reads (prefetch):          0\n");
+         printf("k. L2 read misses (prefetch):    0\n");
+         printf("l. L2 writes:                 %d\n", L2->writes);                     //print number of writes
+         printf("m. L2 write misses:           %d\n", L2->write_misses);         //print number of write misses
+         if(L1->next_level == nullptr){
+               mr = ((double)L2->read_misses + (double)L2->write_misses) / ((double)L2->reads + (double)L2->writes);
+         }
+         else{
+               mr = ((double)L2->read_misses) / ((double)L2->reads);
+         }
+         printf("n. L2 miss rate:              %.4f\n",  mr);
+         printf("o. L2 writebacks:              %d\n", L2->write_backs);           //print number of write backs
+         printf("p. L2 prefetches:              %d\n",L2->prefetches);
+      }
+      else{
+         printf("h. L2 reads (demand):           %d\n",  0);                       //print number of reads
+         printf("i. L2 read misses (demand):     %d\n", 0);           //print number of read misses
+         printf("j. L2 reads (prefetch):         %d\n",  0);                       //print number of reads
+         printf("k. L2 read misses (prefetch):   %d\n", 0);  
+         printf("l. L2 writes:                   %d\n", 0);                     //print number of writes
+         printf("m. L2 write misses:             %d\n", 0);         //print number of write misses         
+         printf("n. L2 miss rate:                %.4f\n", 0.0000);
+         printf("o. L2 write backs:              %d\n", 0);           //print number of write backs
+         printf("p. L2 prefetches:               %d\n", 0);
+      }
 
-      //   if(L1->next_level == nullptr){
-      //       printf("q. Memory traffic:              %d\n", L1->read_misses + L1->write_misses + L1->write_backs + L1->prefetches); //print total memory traffic
-      //    }
-      //    else{
-      //       printf("q. Memory traffic:              %d\n", L2->read_misses + L2->write_misses + L2->write_backs + L2->prefetches); //print total memory traffic
-      //    }
+        if(L1->next_level == nullptr){
+            printf("q. Memory traffic:              %d\n", L1->read_misses + L1->write_misses + L1->write_backs + L1->prefetches); //print total memory traffic
+         }
+         else{
+            printf("q. Memory traffic:              %d\n", L2->read_misses + L2->write_misses + L2->write_backs + L2->prefetches); //print total memory traffic
+         }
 
-      mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
-      printf("%.4f  \n", mr);
+      // mr = ((double)L1->read_misses + (double)L1->write_misses) / ((double)L1->reads + (double)L1->writes);
+      // printf("%.4f  \n", mr);
 
       // mr = ((double)L2->read_misses) / ((double)L2->reads);
       // printf("%.4f\n", mr);
